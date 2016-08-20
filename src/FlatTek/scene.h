@@ -44,6 +44,7 @@ class SceneManager
 		void clear_scenes(void);
 
 		bool update(void);
+		void draw(void);
 
 	friend class Engine;
 };
@@ -53,8 +54,9 @@ class SceneManager
 class Scene
 {
 	public:
-		virtual bool update(){return true;}
 		virtual void init(){}
+		virtual bool update(){return true;}
+		virtual void draw(){}
 
 	protected:
 		SceneManager* scene_manager;

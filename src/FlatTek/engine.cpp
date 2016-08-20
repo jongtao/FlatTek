@@ -29,8 +29,12 @@ Engine::Engine(double timestep): running(false), scene(this)
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 	input.init(event_queue);
+	graphics.init(event_queue);
 
-	testing_display(); // FIXME: replace with renderer
+	//testing_display(); // FIXME: replace with renderer
+	graphics.create_windowed_display("primary", "primary", true, SCREEN_WIDTH, SCREEN_HEIGHT);
+	graphics.create_windowed_display("secondary", "secondary", true, SCREEN_WIDTH, SCREEN_HEIGHT);
+	//graphics.create_fullscreen_display("my_fullscreen", WINDOW_TITLE, true);
 	input.set_disp(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
@@ -57,6 +61,7 @@ void Engine::run(Scene* new_scene)
 	{
 		al_wait_for_event(event_queue, &event); // block until stuff to do
 
+
 		if(event.type == ALLEGRO_EVENT_TIMER) // need to update at rate of timestep
 		{
 			running = scene.update();
@@ -67,16 +72,15 @@ void Engine::run(Scene* new_scene)
 			input.update(&event);
 		}
 		else if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) // window X button
-			running = false;
-
-
-		if(redraw && al_is_event_queue_empty(event_queue)) // need to redraw
 		{
-			output();
-			redraw = false;
+			running = false;
 		}
 
-
+		if(redraw && running && al_is_event_queue_empty(event_queue)) // need to redraw
+		{
+			scene.draw();
+			redraw = false;
+		}
 	} // main loop
 }
 

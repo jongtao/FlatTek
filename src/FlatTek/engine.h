@@ -4,6 +4,7 @@
 
 #include "input.h"
 #include "scene.h"
+#include "graphics.h"
 
 
 
@@ -11,6 +12,7 @@ class Engine
 {
 	public:
 		Input input;
+		Graphics graphics;
 
 		Engine(double timestep);
 		~Engine(void);
@@ -24,7 +26,6 @@ class Engine
 
 		ALLEGRO_EVENT_QUEUE* event_queue;
 		ALLEGRO_TIMER* timer;
-
 
 		SceneManager scene;
 

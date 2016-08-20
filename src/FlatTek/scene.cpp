@@ -114,3 +114,10 @@ bool SceneManager::update(void)
 
 	return true;
 }
+
+
+
+void SceneManager::draw(void)
+{
+	current_scene->draw();
+}

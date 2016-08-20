@@ -7,7 +7,7 @@
 #include <array>
 
 
-//#define USING_JOYSTICK
+#define USING_JOYSTICK
 //#define USING_TOUCH
 #define USING_MOUSE
 
@@ -49,10 +49,13 @@ class Input
 
 		// Obtain input states
 		bool get_key(std::string user_binding);
-		struct Input::MousePos get_mouse(void);
 
-		void set_disp(int width, int height);
-		struct Input::MousePosDouble get_mouse_norm(void);
+		// FIXME: Need to pass in display for position to make sense
+		// get_mouse(graphics)
+		struct Input::MousePos get_mouse(void);// FIXME
+
+		void set_disp(int width, int height); // FIXME: should be deprecated
+		struct Input::MousePosDouble get_mouse_norm(void); // FIXME: requires display
 
 		// Clear all bindings
 		void clear_all(void);

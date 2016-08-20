@@ -30,6 +30,9 @@
     <ClCompile Include="src\FlatTek\engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\FlatTek\graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\FlatTek\FlatTek.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\FlatTek\input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FlatTek\graphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
