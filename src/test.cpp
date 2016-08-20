@@ -1,4 +1,4 @@
-#include "FlatTek/Engine.h"
+#include "FlatTek/engine.h"
 #include "FlatTek/scene.h"
 
 #include <iostream>

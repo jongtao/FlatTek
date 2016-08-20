@@ -22,14 +22,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\FlatTek\Engine.cpp" />
+    <ClCompile Include="src\FlatTek\engine.cpp" />
     <ClCompile Include="src\FlatTek\input.cpp" />
     <ClCompile Include="src\FlatTek\scene.cpp" />
     <ClCompile Include="src\test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\FlatTek\Engine.h" />
+    <ClInclude Include="src\FlatTek\engine.h" />
     <ClInclude Include="src\FlatTek\FlatTek.h" />
+    <ClInclude Include="src\FlatTek\input.h" />
     <ClInclude Include="src\FlatTek\keycodes.h" />
     <ClInclude Include="src\FlatTek\scene.h" />
   </ItemGroup>

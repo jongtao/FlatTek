@@ -27,7 +27,7 @@
     <ClCompile Include="src\FlatTek\scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\FlatTek\Engine.cpp">
+    <ClCompile Include="src\FlatTek\engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,10 @@
     <ClInclude Include="src\FlatTek\scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\FlatTek\Engine.h">
+    <ClInclude Include="src\FlatTek\engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FlatTek\input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
