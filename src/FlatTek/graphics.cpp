@@ -105,6 +105,10 @@ void Graphics::destroy_display(std::string name)
 void Graphics::init(ALLEGRO_EVENT_QUEUE* event_queue)
 {
 	this->event_queue = event_queue;
+
+	if(!(base_font = al_create_builtin_font()))
+		throw std::runtime_error("Failed to create font");
+
 	al_inhibit_screensaver(true);
 }
 

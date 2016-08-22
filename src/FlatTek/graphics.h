@@ -1,9 +1,10 @@
 #pragma once
 
-#include<allegro5/allegro.h>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
 
-#include<string>
-#include<unordered_map>
+#include <string>
+#include <unordered_map>
 
 
 class Display;
@@ -29,6 +30,7 @@ class Graphics
 	
 	private:
 		ALLEGRO_EVENT_QUEUE* event_queue;
+		ALLEGRO_FONT* base_font;
 
 		std::unordered_map<std::string, Display> displays;
 		std::unordered_map<void*, std::string> names;
