@@ -98,13 +98,15 @@ void Input::clear_all(void)
 
 
 
-void Input::init(ALLEGRO_EVENT_QUEUE* event_queue)
+void Input::init(ALLEGRO_EVENT_QUEUE* event_queue, Graphics graphics)
 {
 	if(!al_install_keyboard())
 		throw std::runtime_error("Failed to install keyboard");
 	
 	if(!al_install_mouse())
 		throw std::runtime_error("Failed to install mouse");
+
+	this->graphics = graphics;
 
 	// Listen for keyboard events
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
@@ -167,16 +169,33 @@ void Input::update_state(int device, int keycode, bool new_state)
 
 void Input::update_mouse_axes(const ALLEGRO_EVENT* event)
 {
+	// assign name
+	std::string name = graphics.get_name(event->mouse.display);
+	mouse.display_name = name;
+	mouse_norm.display_name = name;
+
+	// assign integer position
 	mouse.x = event->mouse.x;
 	mouse.y = event->mouse.y;
 	mouse.z = event->mouse.z;
 	mouse.w = event->mouse.w;
 
+	// get diplay dimensions
+	int width = al_get_display_width(event->mouse.display);
+	int height = al_get_display_height(event->mouse.display);
 
-	mouse_norm.x = (double)event->mouse.x / (double)disp_width;
-	mouse_norm.y = (double)event->mouse.y / (double)disp_height;
+	// assign normalized position
+	mouse_norm.x = (double)event->mouse.x / (double)width;
+	mouse_norm.y = (double)event->mouse.y / (double)height;
 	mouse_norm.z = event->mouse.z;
 	mouse_norm.w = event->mouse.w;
+}
+
+
+void Input::update_mouse_display(const ALLEGRO_EVENT* event, bool new_state)
+{
+	mouse.in_display = new_state;
+	mouse_norm.in_display = new_state;
 }
 
 
@@ -204,12 +223,12 @@ void Input::update(const ALLEGRO_EVENT* event)
 			update_mouse_axes(event);
 			break;
 		case ALLEGRO_EVENT_MOUSE_ENTER_DISPLAY:
-			mouse.in_disp = true;
-			mouse_norm.in_disp = true;
+			update_mouse_display(event, true);
+			update_mouse_axes(event);
 			break;
 		case ALLEGRO_EVENT_MOUSE_LEAVE_DISPLAY:
-			mouse.in_disp = false;
-			mouse_norm.in_disp = false;
+			update_mouse_display(event, false);
+			// maintain last "on display" reading
 			break;
 		default:
 			; // Ignore unrecognized event

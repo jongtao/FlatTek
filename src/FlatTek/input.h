@@ -7,9 +7,13 @@
 #include <array>
 
 
+#include "graphics.h"
+
+
 #define USING_JOYSTICK
 //#define USING_TOUCH
 #define USING_MOUSE
+
 
 
 class Input
@@ -25,7 +29,8 @@ class Input
 			int x, y; // position relative to 0,0 of display
 			int z; // vertical mouse wheel. up is positive
 			int w; // horizontal mouse wheel
-			bool in_disp; // in display
+			bool in_display; // in display
+			std::string display_name;
 		};
 
 		struct MousePosDouble
@@ -33,7 +38,8 @@ class Input
 			double x, y; // position relative to 0,0 of display
 			int z; // vertical mouse wheel. up is positive
 			int w; // horizontal mouse wheel
-			bool in_disp; // in display
+			bool in_display; // in display
+			std::string display_name;
 		};
 
 		// Construction
@@ -62,6 +68,8 @@ class Input
 
 
 	private:
+		Graphics graphics;
+
 		// Device->keycode->string binding->keystate
 		std::unordered_map<std::string, bool> keystate;
 		std::array<std::unordered_map<int, std::string>, NUM_DEVICES> binding;
@@ -72,12 +80,13 @@ class Input
 		struct MousePosDouble mouse_norm;
 
 		// Attach input subsystem to main engine
-		void init(ALLEGRO_EVENT_QUEUE* event_queue);
+		void init(ALLEGRO_EVENT_QUEUE* event_queue, Graphics graphics);
 
 		// Update helpers
 		bool is_input(const ALLEGRO_EVENT* event);
 		void update_state(int device, int keycode, bool new_state);
 		void update_mouse_axes(const ALLEGRO_EVENT* event);
+		void update_mouse_display(const ALLEGRO_EVENT* event, bool new_state);
 
 		// Update to be run by main loop
 		void update(const ALLEGRO_EVENT* event);

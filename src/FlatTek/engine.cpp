@@ -28,7 +28,6 @@ Engine::Engine(double timestep): running(false), scene(this)
 	// Listen for timer events
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
-	input.init(event_queue);
 	graphics.init(event_queue);
 
 	//testing_display(); // FIXME: replace with renderer
@@ -36,7 +35,7 @@ Engine::Engine(double timestep): running(false), scene(this)
 	graphics.create_windowed_display("secondary", "secondary", true, SCREEN_WIDTH, SCREEN_HEIGHT);
 	graphics.destroy_display("secondary");
 	//graphics.create_fullscreen_display("my_fullscreen", WINDOW_TITLE, true);
-	input.set_disp(SCREEN_WIDTH, SCREEN_HEIGHT);
+	input.init(event_queue, graphics);
 }
 
 

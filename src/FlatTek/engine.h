@@ -11,8 +11,8 @@
 class Engine
 {
 	public:
-		Input input;
 		Graphics graphics;
+		Input input;
 
 		Engine(double timestep);
 		~Engine(void);

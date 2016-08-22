@@ -51,7 +51,8 @@ class Init: public Scene
 			// Test mouse axes
 			struct Input::MousePosDouble my_mouse = input->get_mouse_norm();
 			std::cout << "my_mouse: " << my_mouse.x << ", " << my_mouse.y << ", " <<
-				my_mouse.z << ", " << my_mouse.w << ", " << my_mouse.in_disp << std::endl;
+				my_mouse.z << ", " << my_mouse.w << ", " << my_mouse.in_display <<
+				", " << my_mouse.display_name << std::endl;
 
 			if(input->get_key("CLICK"))
 			{
