@@ -92,8 +92,25 @@ void Graphics::create_fullscreen_display(std::string name, std::string title,
 }
 
 
+
+void Graphics::destroy_display(std::string name)
+{
+	Display* tmp = &(displays[name]);
+	names.erase((void*)(tmp->display));
+	al_destroy_display(tmp->display);
+	displays.erase(name);
+}
+
+
 void Graphics::init(ALLEGRO_EVENT_QUEUE* event_queue)
 {
 	this->event_queue = event_queue;
 	al_inhibit_screensaver(true);
 }
+
+
+std::string Graphics::get_name(ALLEGRO_DISPLAY* display)
+{
+	return names[(void*)display];
+}
+

@@ -22,18 +22,25 @@ class Graphics
 		void create_fullscreen_display(std::string name, std::string title,
 			bool vsync);
 
+		void destroy_display(std::string name);
+
 		//void create_canvas(std::string name, int width, int height);
 		//void draw_canvas_to();
 	
 	private:
 		ALLEGRO_EVENT_QUEUE* event_queue;
+
 		std::unordered_map<std::string, Display> displays;
 		std::unordered_map<void*, std::string> names;
+
 		std::unordered_map<std::string, ALLEGRO_BITMAP*> canvases;
 
 		void init(ALLEGRO_EVENT_QUEUE* event_queue);
 
+		std::string get_name(ALLEGRO_DISPLAY* display);
+
 	friend class Engine;
+	friend class Input;
 };
 
 
