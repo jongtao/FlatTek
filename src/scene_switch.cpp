@@ -8,7 +8,7 @@ void First::init(void)
 
 	attach_system();
 
-	//graphics.create_windowed_display("primary", "Scene Switch Test", true, 400, 600);
+	graphics->create_windowed_display("primary", "Scene Switch Test", true, 300, 300);
 
 	input->map_key("UP", Input::KEYBOARD, Input::KEY_UP);
 	input->map_key("DOWN", Input::KEYBOARD, Input::KEY_DOWN);

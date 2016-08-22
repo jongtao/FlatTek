@@ -55,6 +55,12 @@ void SceneManager::req_change(Scene* new_scene)
 }
 
 
+Graphics* SceneManager::req_graphics(void)
+{
+	return &(parent_engine->graphics);
+}
+
+
 Input* SceneManager::req_input(void)
 {
 	return &(parent_engine->input);
@@ -120,4 +126,30 @@ bool SceneManager::update(void)
 void SceneManager::draw(void)
 {
 	current_scene->draw();
+}
+
+
+
+
+
+
+
+
+
+void Scene::attach_system(void)
+{
+	if(!scene_manager)
+		throw std::runtime_error("Scene tried to attach to nonexistent manager");
+
+
+	graphics = scene_manager->req_graphics();
+
+	if(!graphics)
+		throw std::runtime_error("Graphics attachment failed");
+
+
+	input = scene_manager->req_input();
+
+	if(!input)
+		throw std::runtime_error("Input attachment failed");
 }

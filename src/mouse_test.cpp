@@ -4,6 +4,9 @@
 void MouseTest::init(void)
 {
 	attach_system();
+
+	graphics->create_windowed_display("primary", "Mouse Test", true, 300, 300);
+
 	input->map_key("CLICK 1", Input::MOUSE, 1);
 	input->map_key("CLICK 2", Input::MOUSE, 2);
 	input->map_key("CLICK 3", Input::MOUSE, 3);

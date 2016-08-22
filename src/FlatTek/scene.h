@@ -7,6 +7,7 @@
 #include <string>
 */
 #include <stdexcept>
+
 #include "graphics.h"
 #include "input.h"
 
@@ -26,9 +27,9 @@ class SceneManager
 		void req_halt();
 		void req_soft_halt();
 
+		Graphics* req_graphics();
 		Input* req_input(void);
 		//void req_audio();
-		//void req_graphics();
 
 	private:
 		Engine* parent_engine;
@@ -56,25 +57,17 @@ class SceneManager
 class Scene
 {
 	public:
-		virtual void init(){}
-		virtual bool update(){return true;}
-		virtual void draw(){}
+		virtual void init(void){}
+		virtual bool update(void){return true;}
+		virtual void draw(void){}
 
 	protected:
 		SceneManager* scene_manager;
+		Graphics* graphics;
 		Input* input;
 		// std::list<GameObject> objects
 		
-		void attach_system(void)
-		{
-			if(!scene_manager)
-				throw std::runtime_error("Scene tried to attach to nonexistent manager");
-
-			input = scene_manager->req_input();
-
-			if(!input)
-				throw std::runtime_error("Input attachment failed");
-		}
+		void attach_system(void);
 	
 	friend SceneManager;
 };
