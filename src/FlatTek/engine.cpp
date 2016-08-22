@@ -33,7 +33,7 @@ Engine::Engine(double timestep): running(false), scene(this)
 
 	//testing_display(); // FIXME: replace with renderer
 	graphics.create_windowed_display("primary", "primary", true, SCREEN_WIDTH, SCREEN_HEIGHT);
-	graphics.create_windowed_display("secondary", "secondary", true, SCREEN_WIDTH, SCREEN_HEIGHT);
+	//graphics.create_windowed_display("secondary", "secondary", true, SCREEN_WIDTH, SCREEN_HEIGHT);
 	//graphics.create_fullscreen_display("my_fullscreen", WINDOW_TITLE, true);
 	input.set_disp(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
