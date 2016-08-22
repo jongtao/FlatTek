@@ -7,6 +7,8 @@
 #include <string>
 */
 #include <stdexcept>
+#include "graphics.h"
+#include "input.h"
 
 class Engine;
 class Input;

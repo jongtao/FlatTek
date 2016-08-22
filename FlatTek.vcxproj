@@ -22,19 +22,25 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\common_test.cpp" />
     <ClCompile Include="src\FlatTek\engine.cpp" />
     <ClCompile Include="src\FlatTek\graphics.cpp" />
     <ClCompile Include="src\FlatTek\input.cpp" />
     <ClCompile Include="src\FlatTek\scene.cpp" />
+    <ClCompile Include="src\mouse_test.cpp" />
+    <ClCompile Include="src\scene_switch.cpp" />
     <ClCompile Include="src\test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\common_test.h" />
     <ClInclude Include="src\FlatTek\engine.h" />
     <ClInclude Include="src\FlatTek\FlatTek.h" />
     <ClInclude Include="src\FlatTek\graphics.h" />
     <ClInclude Include="src\FlatTek\input.h" />
     <ClInclude Include="src\FlatTek\keycodes.h" />
     <ClInclude Include="src\FlatTek\scene.h" />
+    <ClInclude Include="src\mouse_test.h" />
+    <ClInclude Include="src\scene_switch.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{ED880FDB-4363-43CD-9E13-D69CC17381E9}</ProjectGuid>
